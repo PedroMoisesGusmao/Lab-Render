@@ -5,10 +5,11 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 def get_db_connection():
-    conn = psycopg2.connect(host='db',
+    conn = psycopg2.connect(host='lab-render-pedroaraujo4910-1b67.e.aivencloud.com',
                             database='movies',
-                            user='postgres',
-                            password='Postgres2023')
+                            user='avnadmin',
+                            password='AVNS_tif8LQZFubjl4ixKXxu',
+                            port='21261')
     return conn
 
 @app.route('/')
@@ -43,4 +44,4 @@ def index():
     return open('index.html').read()  % (html)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=80)
+    app.run(host="0.0.0.0", port=80, debug=True)
