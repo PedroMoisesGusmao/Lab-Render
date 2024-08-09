@@ -1,14 +1,14 @@
 import os
 import psycopg2
 from flask import Flask, render_template
-
+from dotenv import load_dotenv
 app = Flask(__name__)
 
 def get_db_connection():
     conn = psycopg2.connect(host='lab-render-pedroaraujo4910-1b67.e.aivencloud.com',
                             database='movies',
-                            user='avnadmin',
-                            password='AVNS_tif8LQZFubjl4ixKXxu',
+                            user=os.getenv("DB_USERNAME"),
+                            password=os.getenv("DB_PASSWORD"),
                             port='21261')
     return conn
 
