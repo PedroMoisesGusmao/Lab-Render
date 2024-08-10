@@ -14,12 +14,6 @@ def get_db_connection():
 
 @app.route('/')
 def index():
-    if os.getenv("DB_HOST") == None:
-        print("host")
-    elif os.getenv("DB_USERNAME") == None:
-        print("username")
-    elif os.getenv("DB_PASSWORD") == None:
-        print("password")
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute('SELECT * FROM movies;')
@@ -32,6 +26,13 @@ def index():
     HTML (<li>) de todos os dados.
     """
     html = ""
+
+    if os.getenv("DB_HOST") == None:
+        html += "host\n"
+    elif os.getenv("DB_USERNAME") == None:
+        html += "username\n"
+    elif os.getenv("DB_PASSWORD") == None:
+        html += "password\n"
     
     for row in moviesFet:
         movies.append({"name": row[0], "rating": row[1]})
