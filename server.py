@@ -4,6 +4,13 @@ from flask import Flask, render_template
 from dotenv import load_dotenv
 app = Flask(__name__)
 
+if os.getenv("DB_HOST") == None:
+    print("host")
+elif os.getenv("DB_USERNAME") == None:
+    print("username")
+elif os.getenv("DB_PASSWORD") == None:
+    print("password")
+
 def get_db_connection():
     conn = psycopg2.connect(host=os.getenv("DB_HOST"),
                             database='movies',
