@@ -4,6 +4,8 @@ from flask import Flask, render_template
 from dotenv import load_dotenv
 app = Flask(__name__)
 
+load_dotenv()
+
 def get_db_connection():
     conn = psycopg2.connect(host=os.getenv("DB_HOST"),
                             database='movies',
