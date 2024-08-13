@@ -8,10 +8,10 @@ load_dotenv()
 
 def get_db_connection():
     conn = psycopg2.connect(host=os.getenv("DB_HOST"),
-                            database='movies',
+                            database=os.getenv("DB_DBNAME"),
                             user=os.getenv("DB_USERNAME"),
                             password=os.getenv("DB_PASSWORD"),
-                            port='21261')
+                            port=os.getenv("DB_PORT"))
     return conn
 
 @app.route('/')
